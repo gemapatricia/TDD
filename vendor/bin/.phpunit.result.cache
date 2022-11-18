@@ -1,1 +1,1 @@
-{"version":1,"defects":{"PartidaTest::testNumeroJugadas":3,"JugadaTest::testNumeroJugadas":4},"times":{"PartidaTest::testNumeroJugadas":0,"JugadaTest::testNumeroJugadas":0.001000000000000000020816681711721685132943093776702880859375}}
+{"version":1,"defects":{"PartidaTest::testNumeroJugadas":3,"JugadaTest::testNumeroJugadas":3},"times":{"PartidaTest::testNumeroJugadas":0,"JugadaTest::testNumeroJugadas":0.001000000000000000020816681711721685132943093776702880859375}}
