@@ -20,6 +20,10 @@ Class Jugada{
     public function getNumeroTiradas(){
         return $this->numeroTiradas;
     }
+
+    public function getPuntuacionJugada(){
+        return $this->puntuacionJugada;
+    }
 }
 
 ?>
