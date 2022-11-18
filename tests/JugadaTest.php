@@ -16,7 +16,7 @@ Class JugadaTest extends TestCase{
     
     public function testPuntuacionTiradaNormal(){
         $jugada = new \App\Jugada(4,5);
-        $this->assertEquals($jugada->getPuntuacionJugada(), 8, "No incide la puntuación de la jugada");
+        $this->assertEquals($jugada->getPuntuacionJugada(), 9, "No incide la puntuación de la jugada");
     }
 
 
