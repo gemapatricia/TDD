@@ -9,6 +9,7 @@ Class Partida{
     public function getNumeroJugadas(){
         return $this->numeroJugadas;
     }
+
 }
 
 ?>
