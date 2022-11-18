@@ -4,10 +4,16 @@ use PHPUnit\Framework\TestCase;
 
 Class TiradaTest extends TestCase{
 
-    public function testNumeroJugadas(){
-        $partida = new App\Tirada(1);
+    public function testNumeroPuntuacionTirada(){
+        $tirada = new App\Tirada(1);
 
-        $this->assertEquals($partida->getPuntuacion(), 10, "No incide la puntuación de la tirada");
+        $this->assertEquals($tirada->getPuntuacion(), 1, "No incide la puntuación de la tirada");
+    } 
+
+    public function testNumeroPuntuacionTirada2(){
+        $tirada = new App\Tirada(7);
+
+        $this->assertEquals($tirada->getPuntuacion(), 7, "No incide la puntuación de la tirada");
     } 
 
 }
