@@ -4,7 +4,7 @@ namespace App;
 
 Class Jugada{
 
-    private $numeroTiradas = 0;
+    private $numeroTiradas;
     private $puntuacionJugada;
 
     public function __construct($tirada1, $tirada2){
