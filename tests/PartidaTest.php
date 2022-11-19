@@ -39,6 +39,12 @@ Class PartidaTest extends TestCase{
         $partida->calcularPuntuacion("36 27 -- -- -- -- -- -- -- -- --");
         $this->assertEquals($partida->getPuntuacion(), 18, "No coincide la puntuación de la tirada");
     }
+
+    public function testPartidaDosJugadasValor13(){
+        $partida = new App\Partida();
+        $partida->calcularPuntuacion("06 25 -- -- -- -- -- -- -- -- --");
+        $this->assertEquals($partida->getPuntuacion(), 13, "No coincide la puntuación de la tirada");
+    }
 }
 
 ?>
