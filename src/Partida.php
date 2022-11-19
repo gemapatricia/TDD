@@ -11,11 +11,17 @@ Class Partida{
     }
 
     public function calcularPuntuacion(string $puntuaciones) {
+        $puntuacionFinal = 0;
         $separador = " ";
+        
         $puntuacionesJuego = explode($separador, $puntuaciones);
         $puntuacionTirada = str_split($puntuacionesJuego[0]);
         
-        return $this->puntuacion = $puntuacionTirada[0];
+        for ($i=0; $i<2; $i++){
+            if (is_numeric($puntuacionTirada[$i])) $puntuacionFinal += $puntuacionTirada[$i];
+        }
+
+        return $this->puntuacion = $puntuacionFinal;
     }
 
 }
