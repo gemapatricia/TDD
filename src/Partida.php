@@ -15,12 +15,14 @@ Class Partida{
         $separador = " ";
         
         $puntuacionesJuego = explode($separador, $puntuaciones);
-        $puntuacionTirada = str_split($puntuacionesJuego[0]);
         
-        for ($i=0; $i<2; $i++){
-            if (is_numeric($puntuacionTirada[$i])) $puntuacionFinal += $puntuacionTirada[$i];
-        }
+        for ($j=0; $j<10; $j++){
+            $puntuacionTirada = str_split($puntuacionesJuego[$j]);
 
+            for ($i=0; $i<2; $i++){
+                if (is_numeric($puntuacionTirada[$i])) $puntuacionFinal += $puntuacionTirada[$i];
+            }
+        }
         return $this->puntuacion = $puntuacionFinal;
     }
 
