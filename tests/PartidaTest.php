@@ -36,14 +36,26 @@ Class PartidaTest extends TestCase{
 
     public function testPartidaDosJugadasValor18(){
         $partida = new App\Partida();
-        $partida->calcularPuntuacion("36 27 -- -- -- -- -- -- -- -- --");
+        $partida->calcularPuntuacion("36 27 -- -- -- -- -- -- -- --");
         $this->assertEquals($partida->getPuntuacion(), 18, "No coincide la puntuación de la tirada");
     }
 
     public function testPartidaDosJugadasValor13(){
         $partida = new App\Partida();
-        $partida->calcularPuntuacion("06 25 -- -- -- -- -- -- -- -- --");
+        $partida->calcularPuntuacion("06 25 -- -- -- -- -- -- -- --");
         $this->assertEquals($partida->getPuntuacion(), 13, "No coincide la puntuación de la tirada");
+    }
+
+    public function testPartidaConMasDeDiezJugadas(){
+        try{
+            $partida = new App\Partida();
+            $partida->calcularPuntuacion("06 25 -- -- -- -- -- -- -- -- --");
+            $this->assertEquals($partida->getPuntuacion(), 13, "No coincide la puntuación de la tirada");
+        }
+        catch(Exception $e){
+            $this->assertEquals($e->getMessage(), "Hay más de diez jugadas", "No se ha lanzado la excepción correcta");
+        }
+        
     }
 }
 

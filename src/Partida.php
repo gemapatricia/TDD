@@ -16,14 +16,18 @@ Class Partida{
         
         $puntuacionesJuego = explode($separador, $puntuaciones);
         
-        for ($j=0; $j<10; $j++){
-            $puntuacionTirada = str_split($puntuacionesJuego[$j]);
+        if (count($puntuacionesJuego)>10) throw new \Exception("Hay más de diez jugadas");
 
-            for ($i=0; $i<2; $i++){
-                if (is_numeric($puntuacionTirada[$i])) $puntuacionFinal += $puntuacionTirada[$i];
+        else {
+            for ($j=0; $j<10; $j++){
+                $puntuacionTirada = str_split($puntuacionesJuego[$j]);
+    
+                for ($i=0; $i<2; $i++){
+                    if (is_numeric($puntuacionTirada[$i])) $puntuacionFinal += $puntuacionTirada[$i];
+                }
             }
+            return $this->puntuacion = $puntuacionFinal;
         }
-        return $this->puntuacion = $puntuacionFinal;
     }
 
 }
