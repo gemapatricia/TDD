@@ -4,16 +4,22 @@ use PHPUnit\Framework\TestCase;
 
 Class PartidaTest extends TestCase{
     
-    public function testPartidaUnaTirada(){
+    public function testPartidaUnaTiradaValor1(){
         $partida = new App\Partida();
         $partida->calcularPuntuacion("1- -- -- -- -- -- -- -- -- --");
         $this->assertEquals($partida->getPuntuacion(), 1, "No coincide la puntuación de la tirada");
     }
     
-    public function testPartidaUnaTirada2(){
+    public function testPartidaUnaTiradaValor6(){
         $partida = new App\Partida();
         $partida->calcularPuntuacion("6- -- -- -- -- -- -- -- -- --");
         $this->assertEquals($partida->getPuntuacion(), 6, "No coincide la puntuación de la tirada");
+    }  
+
+    public function testPartidaUnaTiradaValor3(){
+        $partida = new App\Partida();
+        $partida->calcularPuntuacion("3- -- -- -- -- -- -- -- -- --");
+        $this->assertEquals($partida->getPuntuacion(), 3, "No coincide la puntuación de la tirada");
     }  
 }
 
