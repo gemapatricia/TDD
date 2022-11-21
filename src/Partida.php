@@ -22,16 +22,18 @@ Class Partida{
                 $puntuacionTirada = str_split($puntuacionesJuego[$j]);
     
                 for ($i=0; $i<2; $i++){
-                    if ($strike!=0 && is_numeric($puntuacionTirada[$i])){
-                        $puntuacionFinal += 2*$puntuacionTirada[$i];
-                        $strike -= 1;
-                    }
-
-                    else if (is_numeric($puntuacionTirada[$i])) $puntuacionFinal += $puntuacionTirada[$i];
+                    if (is_numeric($puntuacionTirada[$i])) $puntuacionFinal += $puntuacionTirada[$i];
                     
                     elseif ($puntuacionTirada[$i]=="X"){
                         $puntuacionFinal += 10;
-                        $strike += 2;
+                        if ($puntuacionesJuego[$j+1][0]=="X"){
+                            $puntuacionFinal += 10;
+                            $puntuacionFinal += $puntuacionesJuego[$j+2][0];
+                        }
+                        elseif (is_numeric($puntuacionesJuego[$j+1][0])){
+                            $puntuacionFinal += $puntuacionesJuego[$j+1][0];
+                            $puntuacionFinal += $puntuacionesJuego[$j+1][1];
+                        }
                         break;
                     }
                 }
