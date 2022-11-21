@@ -29,9 +29,10 @@ Class Partida{
 
                     else if (is_numeric($puntuacionTirada[$i])) $puntuacionFinal += $puntuacionTirada[$i];
                     
-                    elseif ($puntuacionTirada[$i]=="/"){
+                    elseif ($puntuacionTirada[$i]=="X"){
                         $puntuacionFinal += 10;
                         $strike += 2;
+                        break;
                     }
                 }
             }

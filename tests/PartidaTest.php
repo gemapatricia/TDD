@@ -70,19 +70,25 @@ Class PartidaTest extends TestCase{
 
     public function testPartidaConUnStrikeAislado(){
         $partida = new App\Partida();
-        $partida->calcularPuntuacion("06 /- -- -- -- -- -- -- -- --");
+        $partida->calcularPuntuacion("06 X -- -- -- -- -- -- -- --");
         $this->assertEquals($partida->getPuntuacion(), 16, "No coincide la puntuación de la tirada");
     }
 
     public function testPartidaConUnStrike(){
         $partida = new App\Partida();
-        $partida->calcularPuntuacion("06 /- 52 -- -- -- -- -- -- --");
+        $partida->calcularPuntuacion("06 X 52 -- -- -- -- -- -- --");
         $this->assertEquals($partida->getPuntuacion(), 30, "No coincide la puntuación de la tirada");
     }
 
     public function testPartidaConDosStrike(){
         $partida = new App\Partida();
-        $partida->calcularPuntuacion("06 /- 52 /- 34 -- -- -- -- --");
+        $partida->calcularPuntuacion("06 X 52 X 34 -- -- -- -- --");
+        $this->assertEquals($partida->getPuntuacion(), 54, "No coincide la puntuación de la tirada");
+    }
+
+    public function testPartidaConDosStrikesSeguidos(){
+        $partida = new App\Partida();
+        $partida->calcularPuntuacion("06 X X 34 52 -- -- -- -- --");
         $this->assertEquals($partida->getPuntuacion(), 54, "No coincide la puntuación de la tirada");
     }
 }
