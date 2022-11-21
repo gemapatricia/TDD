@@ -25,6 +25,7 @@ Class Partida{
     
                 for ($i=0; $i<2; $i++){
                     if (is_numeric($puntuacionTirada[$i])) $puntuacionFinal += $puntuacionTirada[$i];
+                    elseif ($puntuacionTirada[$i]=="/") $puntuacionFinal += 10;
                 }
             }
             return $this->puntuacion = $puntuacionFinal;

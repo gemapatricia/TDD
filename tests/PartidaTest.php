@@ -71,7 +71,7 @@ Class PartidaTest extends TestCase{
     public function testPartidaConUnStrikeAislado(){
         $partida = new App\Partida();
         $partida->calcularPuntuacion("06 /- -- -- -- -- -- -- -- --");
-        $this->assertEquals($partida->getPuntuacion(), 26, "No coincide la puntuación de la tirada");
+        $this->assertEquals($partida->getPuntuacion(), 16, "No coincide la puntuación de la tirada");
     }
 }
 
