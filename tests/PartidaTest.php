@@ -92,6 +92,12 @@ Class PartidaTest extends TestCase{
         $this->assertEquals($partida->getPuntuacion(), 60, "No coincide la puntuación de la tirada");
     }
 
+    public function testPartidaConTresStrikes(){
+        $partida = new App\Partida();
+        $partida->calcularPuntuacion("06 X X 34 52 00 X 62 00 00");
+        $this->assertEquals($partida->getPuntuacion(), 86, "No coincide la puntuación de la tirada");
+    }
+
     public function testPartidaConTresStrikesSeguidos(){
         $partida = new App\Partida();
         $partida->calcularPuntuacion("06 X X X 34 52 00 00 00 00");
