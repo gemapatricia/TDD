@@ -58,9 +58,15 @@ Class PartidaTest extends TestCase{
     }
 
     public function testPatidaConMenosDeDiezJugadas(){
-        $partida = new App\Partida();
-        $partida->calcularPuntuacion("06 25 -- -- -- -- -- --");
-        $this->assertEquals($partida->getPuntuacion(), 13, "No coincide la puntuación con la tirada");
+        try{
+            $partida = new App\Partida();
+            $partida->calcularPuntuacion("06 25 -- -- -- -- -- --");
+            $this->assertEquals($partida->getPuntuacion(), 13, "No coincide la puntuación con la tirada");
+        }
+        catch(Exception $e){
+            $this->assertEquals($e->getMessage(), "Hay menos de diez jugadas", "No se ha lanzado la expceción correcta");
+        }
+        
     }
 }
 
