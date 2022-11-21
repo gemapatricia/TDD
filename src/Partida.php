@@ -13,6 +13,7 @@ Class Partida{
     public function calcularPuntuacion(string $puntuaciones) {
         $puntuacionFinal = 0;
         $separador = " ";
+        $strike = 0;
         
         $puntuacionesJuego = explode($separador, $puntuaciones);
         
@@ -24,12 +25,20 @@ Class Partida{
                 $puntuacionTirada = str_split($puntuacionesJuego[$j]);
     
                 for ($i=0; $i<2; $i++){
-                    if (is_numeric($puntuacionTirada[$i])) $puntuacionFinal += $puntuacionTirada[$i];
-                    elseif ($puntuacionTirada[$i]=="/") $puntuacionFinal += 10;
+                    if ($strike!=0 && is_numeric($puntuacionTirada[$i])){
+                        $puntuacionFinal += 2*$puntuacionTirada[$i];
+                        $strike -= 1;
+                    }
+
+                    else if (is_numeric($puntuacionTirada[$i])) $puntuacionFinal += $puntuacionTirada[$i];
+                    
+                    elseif ($puntuacionTirada[$i]=="/"){
+                        $puntuacionFinal += 10;
+                        $strike += 2;
+                    }
                 }
             }
             return $this->puntuacion = $puntuacionFinal;
         }
     }
-
 }
