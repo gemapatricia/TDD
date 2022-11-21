@@ -66,7 +66,12 @@ Class PartidaTest extends TestCase{
         catch(Exception $e){
             $this->assertEquals($e->getMessage(), "Hay menos de diez jugadas", "No se ha lanzado la expceción correcta");
         }
-        
+    }
+
+    public function testPartidaConUnStrikeAislado(){
+        $partida = new App\Partida();
+        $partida->calcularPuntuacion("06 /- -- -- -- -- -- -- -- --");
+        $this->assertEquals($partida->getPuntuacion(), 26, "No coincide la puntuación de la tirada");
     }
 }
 
