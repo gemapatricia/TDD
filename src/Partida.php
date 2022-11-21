@@ -13,7 +13,6 @@ Class Partida{
     public function calcularPuntuacion(string $puntuaciones) {
         $puntuacionFinal = 0;
         $separador = " ";
-        $strike = 0;
         
         $puntuacionesJuego = explode($separador, $puntuaciones);
         
