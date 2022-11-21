@@ -17,10 +17,7 @@ Class Partida{
         
         $puntuacionesJuego = explode($separador, $puntuaciones);
         
-        if (count($puntuacionesJuego)>10) throw new \Exception("Hay más de diez jugadas");
-        elseif (count($puntuacionesJuego)<10) throw new \Exception("Hay menos de diez jugadas");
-
-        else {
+        if (count($puntuacionesJuego)==10) {
             for ($j=0; $j<10; $j++){
                 $puntuacionTirada = str_split($puntuacionesJuego[$j]);
     
@@ -40,5 +37,11 @@ Class Partida{
             }
             return $this->puntuacion = $puntuacionFinal;
         }
+        else $this->generarExcepcion(count($puntuacionesJuego));
+    }
+
+    public function generarExcepcion($numJugadas){
+        if ($numJugadas>10) throw new \Exception("Hay más de diez jugadas");
+        elseif ($numJugadas<10) throw new \Exception("Hay menos de diez jugadas");
     }
 }
