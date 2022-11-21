@@ -17,6 +17,7 @@ Class Partida{
         $puntuacionesJuego = explode($separador, $puntuaciones);
         
         if (count($puntuacionesJuego)>10) throw new \Exception("Hay más de diez jugadas");
+        elseif (count($puntuacionesJuego)<10) throw new \Exception("Hay menos de diez jugadas");
 
         else {
             for ($j=0; $j<10; $j++){
