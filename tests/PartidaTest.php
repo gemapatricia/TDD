@@ -73,6 +73,12 @@ Class PartidaTest extends TestCase{
         $partida->calcularPuntuacion("06 /- -- -- -- -- -- -- -- --");
         $this->assertEquals($partida->getPuntuacion(), 16, "No coincide la puntuación de la tirada");
     }
+
+    public function testPartidaConUnStrike(){
+        $partida = new App\Partida();
+        $partida->calcularPuntuacion("06 /- 52 -- -- -- -- -- -- --");
+        $this->assertEquals($partida->getPuntuacion(), 30, "No coincide la puntuación de la tirada");
+    }
 }
 
 ?>
