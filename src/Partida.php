@@ -28,7 +28,8 @@ Class Partida{
                         $puntuacionFinal += 10;
                         if ($puntuacionesJuego[$j+1][0]=="X"){
                             $puntuacionFinal += 10;
-                            $puntuacionFinal += $puntuacionesJuego[$j+2][0];
+                            if ($puntuacionesJuego[$j+2][0]=="X") $puntuacionFinal += 10;
+                            else if (is_numeric($puntuacionesJuego[$j+2][0])) $puntuacionFinal += $puntuacionesJuego[$j+2][0];
                         }
                         elseif (is_numeric($puntuacionesJuego[$j+1][0])){
                             $puntuacionFinal += $puntuacionesJuego[$j+1][0];
