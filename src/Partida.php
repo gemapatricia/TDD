@@ -21,14 +21,21 @@ Class Partida{
                 $puntuacionTirada = str_split($puntuacionesJuego[$j]);
     
                 for ($i=0; $i<2; $i++){
-                    
                     if (is_numeric($puntuacionTirada[$i])){
-                        if ($i==0 && $puntuacionTirada[$i] + $puntuacionTirada[$i+1] > 10) {
+                        if ($i==0 && $puntuacionTirada[$i+1]=="/"){
+                            $puntuacionFinal += 10;
+                            $puntuacionFinal += $puntuacionesJuego[$j+1][0];
+                        }
+                        elseif ($i==0 && $puntuacionTirada[$i] + $puntuacionTirada[$i+1] > 10) {
                             throw new \Exception("Excede la puntuación de una tirada");
                         }
-                        $puntuacionFinal += $puntuacionTirada[$i];
+                        else{
+                            $puntuacionFinal += $puntuacionTirada[$i];
+                        }
+                        
                     }
                     
+                    // Procesamineto de un strike
                     elseif ($puntuacionTirada[$i]=="X"){
                         $puntuacionFinal += 10;
                         if ($puntuacionesJuego[$j+1][0]=="X"){
@@ -42,6 +49,7 @@ Class Partida{
                         }
                         break;
                     }
+                    else break;
                 }
             }
             return $this->puntuacion = $puntuacionFinal;

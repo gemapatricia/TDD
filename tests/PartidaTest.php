@@ -126,6 +126,13 @@ Class PartidaTest extends TestCase{
         }
         
     }
+
+    public function testPartidaConSpare(){
+        $partida = new App\Partida();
+        $partida->calcularPuntuacion("00 7/ 30 00 00 00 00 00 00 00");
+        $this->assertEquals($partida->getPuntuacion(), 16, "No coincide la puntuación de la tirada");
+    }
+
 }
 
 ?>
