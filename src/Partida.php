@@ -20,9 +20,9 @@ Class Partida{
             for ($j=0; $j<10; $j++){
                 $puntuacionTirada = str_split($puntuacionesJuego[$j]);
     
-                $condicion = 2;
-                
-                for ($i=0; $i<$condicion; $i++){
+                $tiradas = 2;
+
+                for ($i=0; $i<$tiradas; $i++){
 
                     if (is_numeric($puntuacionTirada[$i])){
                         if ($i==0 && $puntuacionTirada[$i+1]=="/"){
@@ -44,18 +44,24 @@ Class Partida{
                     // Procesamineto de un strike
                     elseif ($puntuacionTirada[$i]=="X"){
                         $puntuacionFinal += 10;
-                        if ($j<9 && $puntuacionesJuego[$j+1][0]=="X"){
-                            $puntuacionFinal += 10;
-                            if ($puntuacionesJuego[$j+2][0]=="X") $puntuacionFinal += 10;
-                            else if (is_numeric($puntuacionesJuego[$j+2][0])) $puntuacionFinal += $puntuacionesJuego[$j+2][0];
+                        if ($j<9){
+                            if ($puntuacionesJuego[$j+1][0]=="X"){
+                                $puntuacionFinal += 10;
+                                if ($puntuacionesJuego[$j+2][0]=="X") $puntuacionFinal += 10;
+                                else if (is_numeric($puntuacionesJuego[$j+2][0])) $puntuacionFinal += $puntuacionesJuego[$j+2][0];
+                            }
+                            elseif (is_numeric($puntuacionesJuego[$j+1][0])){
+                                $puntuacionFinal += $puntuacionesJuego[$j+1][0];
+                                if (is_numeric($puntuacionesJuego[$j+1][1])) $puntuacionFinal += $puntuacionesJuego[$j+1][1];
+                                elseif ($puntuacionesJuego[$j+1][1]=="/") $puntuacionFinal += 10 - $puntuacionesJuego[$j+1][0];
+                            }
+                        break;
                         }
-                        elseif ($j<9 && is_numeric($puntuacionesJuego[$j+1][0])){
-                            $puntuacionFinal += $puntuacionesJuego[$j+1][0];
-                            if (is_numeric($puntuacionesJuego[$j+1][1])) $puntuacionFinal += $puntuacionesJuego[$j+1][1];
-                            elseif ($puntuacionesJuego[$j+1][1]=="/") $puntuacionFinal += 10 - $puntuacionesJuego[$j+1][0];
+                        elseif ($j==9){
+                            $tiradas=3;
+                            $puntuacionFinal += $puntuacionesJuego[$j][1];
+                            $puntuacionFinal += $puntuacionesJuego[$j][2];
                         }
-                        if ($j<9) break;
-                        elseif ($j==9) $condicion = 3;
                     }
                     else break;
                 }
