@@ -61,10 +61,10 @@ Class Partida{
             }
             $puntuacionUltimaTirada = str_split($puntuacionesJuego[9]);
             
-            foreach ($puntuacionUltimaTirada as $value){
+            foreach ($puntuacionUltimaTirada as $indice => $value){
                 if (is_numeric($value)) $puntuacionFinal += $value;
                 elseif ($value=="X") $puntuacionFinal += 10;
-                elseif ($value=="/") $puntuacionFinal += 0;
+                elseif ($value=="/") $puntuacionFinal += (10 - $puntuacionUltimaTirada[$indice-1]);
             }
             return $this->puntuacion = $puntuacionFinal;
         }

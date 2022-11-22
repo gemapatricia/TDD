@@ -169,6 +169,18 @@ Class PartidaTest extends TestCase{
         $this->assertEquals($partida->getPuntuacion(), 24, "No coincide la puntuación de la tirada");
     }
 
+    public function testPartidaConUltimoSpare(){
+        $partida = new App\Partida();
+        $partida->calcularPuntuacion("00 00 00 00 00 00 00 00 00 5/4");
+        $this->assertEquals($partida->getPuntuacion(), 14, "No coincide la puntuación de la tirada");
+    }
+
+    public function testPartidaConUltimoSpareStrike(){
+        $partida = new App\Partida();
+        $partida->calcularPuntuacion("00 00 00 00 00 00 00 00 00 X4/");
+        $this->assertEquals($partida->getPuntuacion(), 20, "No coincide la puntuación de la tirada");
+    }
+
 }
 
 ?>
