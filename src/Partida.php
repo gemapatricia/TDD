@@ -24,7 +24,10 @@ Class Partida{
                     if (is_numeric($puntuacionTirada[$i])){
                         if ($i==0 && $puntuacionTirada[$i+1]=="/"){
                             $puntuacionFinal += 10;
-                            $puntuacionFinal += $puntuacionesJuego[$j+1][0];
+                            if (is_numeric($puntuacionesJuego[$j+1][0])) $puntuacionFinal += $puntuacionesJuego[$j+1][0];
+                            elseif ($puntuacionesJuego[$j+1][0]=="X"){
+                                $puntuacionFinal += 10;
+                            }
                         }
                         elseif ($i==0 && $puntuacionTirada[$i] + $puntuacionTirada[$i+1] > 10) {
                             throw new \Exception("Excede la puntuación de una tirada");
@@ -45,7 +48,8 @@ Class Partida{
                         }
                         elseif (is_numeric($puntuacionesJuego[$j+1][0])){
                             $puntuacionFinal += $puntuacionesJuego[$j+1][0];
-                            $puntuacionFinal += $puntuacionesJuego[$j+1][1];
+                            if (is_numeric($puntuacionesJuego[$j+1][1])) $puntuacionFinal += $puntuacionesJuego[$j+1][1];
+                            elseif ($puntuacionesJuego[$j+1][1]=="/") $puntuacionFinal += 10 - $puntuacionesJuego[$j+1][0];
                         }
                         break;
                     }
