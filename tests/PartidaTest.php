@@ -247,9 +247,9 @@ class PartidaTest extends TestCase
         try {
             $partida = new App\Partida();
             $partida->calcularPuntuacion("00 00 00 00 00 00 00 00 00 123");
-            $this->assertEquals($partida->getPuntuacion(), 6, "No coincide la puntuación de la tirada");
+            $this->assertEquals($partida->getPuntuacion(), 3, "No coincide la puntuación de la tirada");
         } catch (Exception $e) {
-            $this->assertEquals($e->getMessage(), "No puede haber una misma tirada con otro valor");
+            $this->assertEquals($e->getMessage(), "No puede haber tres tiradas numéricas en la última partida");
         }
     }
 

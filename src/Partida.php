@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Exception;
+
 Class Partida{
 
     private $puntuacion;
@@ -31,7 +33,7 @@ Class Partida{
                             }
                         }
                         elseif ($i==0 && $puntuacionTirada[$i] + $puntuacionTirada[$i+1] > 10) {
-                            throw new \Exception("Excede la puntuación de una tirada");
+                            throw new Exception("Excede la puntuación de una tirada");
                         }
                         else{
                             $puntuacionFinal += $puntuacionTirada[$i];
@@ -53,7 +55,7 @@ Class Partida{
                                 if (is_numeric($puntuacionesJuego[$j+1][1])) $puntuacionFinal += $puntuacionesJuego[$j+1][1];
                                 elseif ($puntuacionesJuego[$j+1][1]=="/") $puntuacionFinal += 10 - $puntuacionesJuego[$j+1][0];
                             }
-                            elseif ($puntuacionTirada[$i+1] != null) throw new \Exception("No puede haber una misma tirada con otro valor");
+                            elseif ($puntuacionTirada[$i+1] != null) throw new Exception("No puede haber una misma tirada con otro valor");
                             break;
                         }
                     }
@@ -62,10 +64,17 @@ Class Partida{
             }
             $puntuacionUltimaTirada = str_split($puntuacionesJuego[9]);
             
+            $numeros=0;
             foreach ($puntuacionUltimaTirada as $indice => $value){
-                if (is_numeric($value)) $puntuacionFinal += $value;
+                                
+                if ($numeros==2) throw new Exception("No puede haber tres tiradas numéricas en la última partida");
+                elseif (is_numeric($value)){
+                    $puntuacionFinal += $value;
+                    $numeros += 1;
+                }
                 elseif ($value=="X") $puntuacionFinal += 10;
                 elseif ($value=="/") $puntuacionFinal += (10 - $puntuacionUltimaTirada[$indice-1]);
+                
             }
             return $this->puntuacion = $puntuacionFinal;
         }
@@ -73,7 +82,7 @@ Class Partida{
     }
 
     public function generarExcepcion($numJugadas){
-        if ($numJugadas>10) throw new \Exception("Hay más de diez jugadas");
-        elseif ($numJugadas<10) throw new \Exception("Hay menos de diez jugadas");
+        if ($numJugadas>10) throw new Exception("Hay más de diez jugadas");
+        elseif ($numJugadas<10) throw new Exception("Hay menos de diez jugadas");
     }
 }
