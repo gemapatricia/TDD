@@ -193,6 +193,17 @@ Class PartidaTest extends TestCase{
         $this->assertEquals($partida->getPuntuacion(), 121, "No coincide la puntuación de la tirada");
     }
 
+    public function testPartidaExcepcionStrike(){
+        try{
+            $partida = new App\Partida();
+            $partida->calcularPuntuacion("00 00 00 X1 00 00 00 00 00 00");
+            $this->assertEquals($partida->getPuntuacion(), 10, "No coincide la puntuación de la tirada");
+        }
+        catch(Exception $e){
+            $this->assertEquals($e->getMessage(), "No puede haber una misma tirada con otro valor");
+        }
+    }
+
 }
 
 ?>

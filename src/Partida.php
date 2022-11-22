@@ -21,7 +21,7 @@ Class Partida{
                 $puntuacionTirada = str_split($puntuacionesJuego[$j]);
 
                 for ($i=0; $i<2; $i++){
-
+                    // Procesamiento de número 
                     if (is_numeric($puntuacionTirada[$i])){
                         if ($i==0 && $puntuacionTirada[$i+1]=="/"){
                             $puntuacionFinal += 10;
@@ -53,7 +53,8 @@ Class Partida{
                                 if (is_numeric($puntuacionesJuego[$j+1][1])) $puntuacionFinal += $puntuacionesJuego[$j+1][1];
                                 elseif ($puntuacionesJuego[$j+1][1]=="/") $puntuacionFinal += 10 - $puntuacionesJuego[$j+1][0];
                             }
-                        break;
+                            elseif ($puntuacionTirada[$i+1] != null) throw new \Exception("No puede haber una misma tirada con otro valor");
+                            break;
                         }
                     }
                     else break;
