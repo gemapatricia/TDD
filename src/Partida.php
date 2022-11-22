@@ -17,12 +17,10 @@ Class Partida{
         $puntuacionesJuego = explode($separador, $puntuaciones);
         
         if (count($puntuacionesJuego)==10) {
-            for ($j=0; $j<10; $j++){
+            for ($j=0; $j<9; $j++){
                 $puntuacionTirada = str_split($puntuacionesJuego[$j]);
-    
-                $tiradas = 2;
 
-                for ($i=0; $i<$tiradas; $i++){
+                for ($i=0; $i<2; $i++){
 
                     if (is_numeric($puntuacionTirada[$i])){
                         if ($i==0 && $puntuacionTirada[$i+1]=="/"){
@@ -57,14 +55,16 @@ Class Partida{
                             }
                         break;
                         }
-                        elseif ($j==9){
-                            $tiradas=3;
-                            $puntuacionFinal += $puntuacionesJuego[$j][1];
-                            $puntuacionFinal += $puntuacionesJuego[$j][2];
-                        }
                     }
                     else break;
                 }
+            }
+            $puntuacionUltimaTirada = str_split($puntuacionesJuego[9]);
+            
+            foreach ($puntuacionUltimaTirada as $value){
+                if (is_numeric($value)) $puntuacionFinal += $value;
+                elseif ($value=="X") $puntuacionFinal += 10;
+                elseif ($value=="/") $puntuacionFinal += 0;
             }
             return $this->puntuacion = $puntuacionFinal;
         }
