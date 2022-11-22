@@ -6,19 +6,19 @@ Class PartidaTest extends TestCase{
     
     public function testPartidaUnaTiradaValor1(){
         $partida = new App\Partida();
-        $partida->calcularPuntuacion("1- 00 00 00 00 00 00 00 00 00");
+        $partida->calcularPuntuacion("10 00 00 00 00 00 00 00 00 00");
         $this->assertEquals($partida->getPuntuacion(), 1, "No coincide la puntuación de la tirada");
     }
     
     public function testPartidaUnaTiradaValor6(){
         $partida = new App\Partida();
-        $partida->calcularPuntuacion("6- 00 00 00 00 00 00 00 00 00");
+        $partida->calcularPuntuacion("60 00 00 00 00 00 00 00 00 00");
         $this->assertEquals($partida->getPuntuacion(), 6, "No coincide la puntuación de la tirada");
     }  
 
     public function testPartidaUnaTiradaValor3(){
         $partida = new App\Partida();
-        $partida->calcularPuntuacion("3- 00 00 00 00 00 00 00 00 00");
+        $partida->calcularPuntuacion("30 00 00 00 00 00 00 00 00 00");
         $this->assertEquals($partida->getPuntuacion(), 3, "No coincide la puntuación de la tirada");
     }
     
@@ -121,7 +121,7 @@ Class PartidaTest extends TestCase{
             $partida = new App\Partida();
             $partida->calcularPuntuacion("76 00 00 00 00 00 00 00 00 00");
         }
-        catch(Excepcion $e){
+        catch(Exception $e){
             $this->assertEquals($e->getMessage(), "Excede la puntuación de una tirada", "No se lanza la excepción correcta");
         }
         

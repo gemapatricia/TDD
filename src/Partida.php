@@ -21,7 +21,13 @@ Class Partida{
                 $puntuacionTirada = str_split($puntuacionesJuego[$j]);
     
                 for ($i=0; $i<2; $i++){
-                    if (is_numeric($puntuacionTirada[$i])) $puntuacionFinal += $puntuacionTirada[$i];
+                    
+                    if (is_numeric($puntuacionTirada[$i])){
+                        if ($i==0 && $puntuacionTirada[$i] + $puntuacionTirada[$i+1] > 10) {
+                            throw new \Exception("Excede la puntuación de una tirada");
+                        }
+                        $puntuacionFinal += $puntuacionTirada[$i];
+                    }
                     
                     elseif ($puntuacionTirada[$i]=="X"){
                         $puntuacionFinal += 10;
