@@ -64,6 +64,8 @@ Class Partida{
             }
             $puntuacionUltimaTirada = str_split($puntuacionesJuego[9]);
             
+            //$puntuacionFinal += $this->puntuacionUltimaJugada($puntuacionUltimaTirada);
+
             $numeros=0;
             foreach ($puntuacionUltimaTirada as $indice => $value){
                                 
@@ -76,6 +78,7 @@ Class Partida{
                 elseif ($value=="/") $puntuacionFinal += (10 - $puntuacionUltimaTirada[$indice-1]);
                 
             }
+
             return $this->puntuacion = $puntuacionFinal;
         }
         else $this->generarExcepcion(count($puntuacionesJuego));
@@ -84,5 +87,22 @@ Class Partida{
     public function generarExcepcion($numJugadas){
         if ($numJugadas>10) throw new Exception("Hay más de diez jugadas");
         elseif ($numJugadas<10) throw new Exception("Hay menos de diez jugadas");
+    }
+
+    public function puntuacionUltimaJugada($ultimajugada){
+        $numeros=0;
+        $puntuacion=0;
+
+        foreach ($ultimajugada as $indice => $value){
+                                
+            if ($numeros==2) throw new Exception("No puede haber tres tiradas numéricas en la última partida");
+            elseif (is_numeric($value)){
+                $puntuacion += $value;
+                $numeros += 1;
+            }
+            elseif ($value=="X") $puntuacion += 10;
+            elseif ($value=="/") $puntuacion += (10 - $ultimajugada[$indice-1]);
+        }
+        return $puntuacion;
     }
 }
